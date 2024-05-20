@@ -1,0 +1,7 @@
+streamlit
+streamlit_tags
+psycopg2
+pandas
+time
+openai
+os
