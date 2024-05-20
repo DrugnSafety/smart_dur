@@ -8,7 +8,6 @@ import os
 
 #os.environ["OPENAI_API_KEY"] ='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'  # Replace with your actual OpenAI API key
 MODEL="gpt-4o"
-client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", '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'))
 
 # Function to reset session state
 def reset_state():
@@ -468,7 +467,9 @@ if "OPENAI_API_KEY" in st.session_state:
 
                     #introduction_template_reconciliation = instruction_template_introduction.format(patient_information=patient_information) + generate_instructions_from_df(df_in_labels, df_info) + instruction_template_tail
                     intrudction_template_interaction = instruction_template_introduction.format(patient_information = patient_information) + generate_instructions_from_df (df_pa_labels, df_info) + instruction_template_interaction_tail
-                    
+
+                    client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", openai_api_key))
+
                     completion = client.chat.completions.create(
                         model=MODEL,
                         messages=[
